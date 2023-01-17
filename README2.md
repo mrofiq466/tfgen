@@ -29,15 +29,15 @@ For example you want to create 2 VM(s) with following specification:
 
 | VM Name | OS | vCPU(s) | Nested | RAM | Storage | NIC | Console | Inject Public Key |
 |-|-|-|-|-|-|-|-|-|
-| demo-tfgen1 | template-ubuntu1804.img | 2 | n | 4G | vda: 10G<br>vdb: 10G<br>vdc: 5G | ens3: 10.10.110.10/24 | spice | root@btechserver<br>ops@ops-laptop |
-| demo-tfgen2 | template-centos8.qcow2 | 4 | y | 8G | vda: 50G | eth0: 10.10.110.20/24<br>eth1: 10.10.120.20/24 | vnc | root@btechserver<br>ops@ops-laptop |
+| demo-tfgen1 | template-ubuntu1804.img | 2 | n | 4G | vda: 10G<br>vdb: 10G<br>vdc: 5G | ens3: 10.10.110.10/24 | spice | root@server<br>ops@ops-laptop |
+| demo-tfgen2 | template-centos8.qcow2 | 4 | y | 8G | vda: 50G | eth0: 10.10.110.20/24<br>eth1: 10.10.120.20/24 | vnc | root@server<br>ops@ops-laptop |
 
 You will need to create environment file like following example:
 
 demo-env.txt
 ```txt
 [LAB]
-PUBKEY1: ssh-rsa example root@btechserver
+PUBKEY1: ssh-rsa example root@server
 PUBKEY2: ssh-rsa example ops@ops-laptop
 
 [VM1]
@@ -84,7 +84,7 @@ terraform apply -auto-approve
 ```
 
 ### Explanation
-Note: Only works on btech lab
+Note: Only lab
 
 ### [LAB] Section
 - PUBKEYn: Public Key that will be injected to the VM
