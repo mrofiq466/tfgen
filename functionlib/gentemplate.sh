@@ -46,7 +46,7 @@ resource "libvirt_volume" "${!VM_NAME}-vda" {
     name = "${!VM_NAME}-vda.qcow2"
     pool = "vms"
     base_volume_name = "${!VM_OS}"
-    base_volume_pool = "isos"
+    base_volume_pool = "os"
     size = "${!VM_DISK1}"
     format = "qcow2"
 }
@@ -191,7 +191,7 @@ EOF
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
     shell: /bin/bash
     lock_passwd: false
-    groups: users, wheel
+    groups: users, admin
 ssh_pwauth: true
 disable_root: false
 chpasswd:
@@ -211,7 +211,7 @@ users:
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
     shell: /bin/bash
     lock_passwd: false
-    groups: users, wheel
+    groups: users, admin
 ssh_pwauth: true
 disable_root: false
 chpasswd:
